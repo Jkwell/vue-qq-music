@@ -1,0 +1,38 @@
+@import '../../common/stylus/variable.styl'
+.slider
+  min-height: 1px
+  .slider-group
+    position: relative
+    white-space: nowrap
+    overflow: hidden
+    .slider-item
+      float: left
+      text-align: center
+      box-sizing: border-box
+      overflow: hidden
+      a
+        display: block
+        width: 100%
+        text-decoration: none
+        overflow: hidden
+        img 
+          display: block
+          width: 100%
+  .dots
+    position: absolute
+    right: 0
+    left: 0
+    bottom: 12px
+    text-align: center
+    font-size: 0
+    .dot
+      display: inline-block
+      width: 8px
+      height: 8px
+      margin: 0 4px
+      border-radius: 50%
+      background: $color-text-l
+      &.active
+        width: 20px
+        border-radius: 5px
+        background: $color-text-ll
