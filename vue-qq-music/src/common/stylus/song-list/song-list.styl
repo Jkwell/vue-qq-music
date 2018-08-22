@@ -1,0 +1,25 @@
+@import '../variable.styl'
+@import '../mixin.styl'
+.song-list
+  .item
+    display: flex
+    align-items: center
+    box-sizing: border-box
+    height: 64px
+    font-size: $font-size-medium
+    .rank
+      flex: 0 0 25px
+      width: 25px
+      margin-right: 30px
+      text-align: center
+    .content
+      flex: 1
+      line-height: 20px
+      overflow: hidden
+      .name
+        nowrap()
+        color: $color-text
+      .desc
+        nowrap()
+        margin-top: 4px
+        color: $color-text-d
