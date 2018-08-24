@@ -6,7 +6,7 @@
     <h1 class="title">{{title}}</h1>
     <div class="bg-image" :style="bgStyle" ref="bgImage">
       <div class="play-wrapper">
-        <div class="play" ref="playBtn" v-show="songs.length > 0">
+        <div class="play" ref="playBtn" v-show="songs.length > 0" @click="randomPlay">
           <i class="icon-play"></i>
           <span class="text">随机播放全部</span>
         </div>
@@ -16,7 +16,7 @@
     <div class="bg-layer" ref="layer"></div>
     <scroll class="list" :data="songs" ref="list" :listenScroll="listenScroll" :probeType="probeType" @scroll="scroll">
       <div class="song-list-wrapper">
-        <songList :songs="songs"></songList>
+        <songList @selectItem="selectSong" :songs="songs"></songList>
       </div>
       <div v-show="!songs.length" class="loading-container">
         <loading></loading>
@@ -30,6 +30,7 @@
   import loading from 'base/loading/loading'
   import songList from 'base/song-list/song-list'
   import {prefixStyle} from 'common/js/dom'
+  import {mapActions} from 'vuex'
   const RESERVED_HEIGHT = 40
   const transform = prefixStyle('transform')
   const backdrop = prefixStyle('backdrop-filter')
@@ -73,7 +74,20 @@
       },
       back() {
         this.$router.back()
-      }
+      },
+      selectSong(item, index) {
+        this.selectItem({
+          list: this.songs,
+          index: index
+        })
+      },
+      randomPlay() {
+        this.setRandomPlay({list: this.songs})
+      },
+      ...mapActions({
+        'selectItem': 'selectPlay',
+        'setRandomPlay': 'randomPlay'
+      })
     },
     watch: {
       scrollY(newVal) {
