@@ -10,7 +10,10 @@ import 'common/stylus/index.styl'
 Vue.config.productionTip = false
 
 fastclick.attach(document.body)
-
+/* eslint-disable */
+// import VConsole from 'vconsole'
+// var vConsole = new VConsole()
+// console.log('test')
 // lazy
 Vue.use(lazyLoad, {
   loading: require('common/image/default.png')
